@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#050507">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MPH">
+    <title>MPH</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell" aria-label="GPS speedometer">
+      <section class="display" aria-live="polite">
+        <div class="topbar">
+          <div class="signal">
+            <span class="dot"></span>
+            <span id="statusText">READY</span>
+          </div>
+          <button id="unitButton" class="icon-button" type="button" aria-label="Switch units">MPH</button>
+        </div>
+
+        <div class="speed-wrap">
+          <div id="speedValue" class="speed-value">0</div>
+          <div id="unitLabel" class="unit-label">MPH</div>
+        </div>
+
+        <div class="gauge" aria-hidden="true">
+          <div class="ring">
+            <div id="needle" class="needle"></div>
+            <div class="hub"></div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div>
+            <span>MAX</span>
+            <strong id="maxSpeed">0</strong>
+          </div>
+          <div>
+            <span>AVG</span>
+            <strong id="avgSpeed">0</strong>
+          </div>
+          <div>
+            <span>GPS</span>
+            <strong id="accuracy">--</strong>
+          </div>
+        </div>
+      </section>
+
+      <nav class="control-bar" aria-label="Controls">
+        <button id="startButton" class="primary" type="button">Start</button>
+        <button id="resetButton" type="button">Reset</button>
+      </nav>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
