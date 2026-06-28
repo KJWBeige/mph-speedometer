@@ -176,7 +176,7 @@ function reset() {
 
 function buildDial() {
   const tickRadius = 43;
-  const labelRadius = 34;
+  const labelRadius = 58;
   const fragment = document.createDocumentFragment();
 
   for (let mph = 0; mph <= GAUGE_MAX_MPH; mph += 1) {
