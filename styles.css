@@ -52,15 +52,15 @@ button:active {
   grid-template-rows: 1fr auto;
   width: 100vw;
   height: 100svh;
-  padding: max(18px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  padding: max(14px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
 }
 
 .display {
   display: grid;
-  grid-template-rows: auto minmax(8.5rem, 1fr) auto auto;
+  grid-template-rows: auto minmax(10rem, auto) auto auto;
   align-items: center;
   min-height: 0;
-  padding: 8px 0 12px;
+  padding: 4px 0 10px;
 }
 
 .topbar,
@@ -75,8 +75,8 @@ button:active {
   grid-template-columns: 1fr auto 1fr;
   align-items: start;
   gap: 12px;
-  min-height: 172px;
-  padding-top: 14px;
+  min-height: 126px;
+  padding-top: 8px;
 }
 
 .signal {
@@ -110,15 +110,15 @@ button:active {
 .compass {
   display: grid;
   justify-items: center;
-  gap: 8px;
-  min-width: min(40vw, 10.5rem);
-  margin-top: 14px;
+  gap: 6px;
+  min-width: min(30vw, 8rem);
+  margin-top: 10px;
 }
 
 .compass-dial {
   position: relative;
-  width: min(38vw, 10rem);
-  height: min(38vw, 10rem);
+  width: min(29vw, 7.5rem);
+  height: min(29vw, 7.5rem);
   border: 1px solid var(--line);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
@@ -130,32 +130,32 @@ button:active {
 .compass-dial span {
   position: absolute;
   color: var(--muted);
-  font-size: clamp(0.62rem, 2.7vw, 0.86rem);
+  font-size: clamp(0.56rem, 2.3vw, 0.74rem);
   font-weight: 900;
   line-height: 1;
 }
 
 .compass-dial span:nth-child(1) {
-  top: 10px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
   color: var(--text);
 }
 
 .compass-dial span:nth-child(2) {
-  right: 11px;
+  right: 9px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .compass-dial span:nth-child(3) {
-  bottom: 10px;
+  bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .compass-dial span:nth-child(4) {
-  left: 11px;
+  left: 9px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -164,8 +164,8 @@ button:active {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 6px;
-  height: 70%;
+  width: 5px;
+  height: 68%;
   border-radius: 999px;
   background: linear-gradient(180deg, var(--rose) 0 48%, var(--cyan) 52% 100%);
   transform: translate(-50%, -50%) rotate(0deg);
@@ -176,17 +176,17 @@ button:active {
 .compass-needle::before {
   content: "";
   position: absolute;
-  top: -6px;
+  top: -5px;
   left: 50%;
-  border-right: 7px solid transparent;
-  border-bottom: 12px solid var(--rose);
-  border-left: 7px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid var(--rose);
+  border-left: 6px solid transparent;
   transform: translateX(-50%);
 }
 
 .compass strong {
   color: var(--text);
-  font-size: clamp(0.86rem, 3.4vw, 1.1rem);
+  font-size: clamp(0.78rem, 3vw, 0.98rem);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0;
 }
@@ -205,14 +205,15 @@ button:active {
 }
 
 .speed-wrap {
-  align-self: end;
+  align-self: center;
   text-align: center;
   text-shadow: 0 0 24px rgba(85, 214, 255, 0.22);
+  padding-top: 4px;
 }
 
 .speed-value {
   font-variant-numeric: tabular-nums;
-  font-size: clamp(8.2rem, 33vw, 12.5rem);
+  font-size: clamp(9.4rem, 42vw, 13.5rem);
   line-height: 0.82;
   font-weight: 950;
   letter-spacing: 0;
@@ -223,7 +224,7 @@ button:active {
 }
 
 .unit-label {
-  margin-top: 0.3rem;
+  margin-top: 0.15rem;
   color: var(--muted);
   font-size: 1rem;
   font-weight: 900;
@@ -233,13 +234,13 @@ button:active {
 .gauge {
   display: grid;
   place-items: center;
-  min-height: 18rem;
-  padding: 28px 0 20px;
+  min-height: 13.5rem;
+  padding: 18px 0 14px;
 }
 
 .ring {
   position: relative;
-  width: min(76vw, 20rem);
+  width: min(58vw, 15.5rem);
   aspect-ratio: 1;
   border-radius: 50%;
   background:
@@ -269,7 +270,7 @@ button:active {
   left: 50%;
   top: 50%;
   width: 2px;
-  height: 8px;
+  height: 7px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.28);
   transform-origin: 50% 50%;
@@ -277,7 +278,7 @@ button:active {
 
 .tick.major {
   width: 3px;
-  height: 15px;
+  height: 13px;
   background: rgba(255, 255, 255, 0.74);
 }
 
@@ -286,7 +287,7 @@ button:active {
   left: 50%;
   top: 50%;
   color: rgba(248, 248, 251, 0.96);
-  font-size: clamp(0.78rem, 3.3vw, 1rem);
+  font-size: clamp(0.72rem, 3vw, 0.92rem);
   font-weight: 900;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -300,7 +301,7 @@ button:active {
   left: 50%;
   top: 50%;
   width: 4px;
-  height: 35%;
+  height: 34%;
   border-radius: 999px;
   background: linear-gradient(180deg, var(--rose), var(--cyan));
   transform: translate(-50%, -100%) rotate(-130deg);
@@ -326,7 +327,7 @@ button:active {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
 
 .stats div {
@@ -334,7 +335,7 @@ button:active {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
-  padding: 12px 10px;
+  padding: 10px 10px;
   text-align: center;
 }
 
@@ -359,7 +360,7 @@ button:active {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(14, 15, 20, 0.86);
-  padding: 8px;
+  padding: 7px;
   backdrop-filter: blur(24px);
 }
 
