@@ -130,7 +130,7 @@ button:active {
 .compass-dial span {
   position: absolute;
   color: var(--muted);
-  font-size: clamp(0.48rem, 1.8vw, 0.62rem);
+  font-size: clamp(0.56rem, 2.05vw, 0.72rem);
   font-weight: 900;
   line-height: 1;
 }
@@ -182,13 +182,6 @@ button:active {
   border-bottom: 8px solid var(--rose);
   border-left: 5px solid transparent;
   transform: translateX(-50%);
-}
-
-.compass strong {
-  color: var(--text);
-  font-size: clamp(0.68rem, 2.5vw, 0.84rem);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0;
 }
 
 .unit-badge {

@@ -1,8 +1,8 @@
 const METERS_PER_SECOND_TO_MPH = 2.2369362921;
+const METERS_PER_MILE = 1609.344;
 const GAUGE_MAX_MPH = 30;
 const GAUGE_SWEEP_DEGREES = 260;
 const GAUGE_START_DEGREES = -130;
-const DIRECTIONS = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 
 const els = {
   speed: document.querySelector("#speedValue"),
@@ -13,11 +13,10 @@ const els = {
   dot: document.querySelector(".dot"),
   max: document.querySelector("#maxSpeed"),
   avg: document.querySelector("#avgSpeed"),
-  accuracy: document.querySelector("#accuracy"),
+  distance: document.querySelector("#distanceValue"),
   needle: document.querySelector("#needle"),
   dialTicks: document.querySelector("#dialTicks"),
-  compassNeedle: document.querySelector("#compassNeedle"),
-  headingText: document.querySelector("#headingText")
+  compassNeedle: document.querySelector("#compassNeedle")
 };
 
 const state = {
@@ -25,6 +24,7 @@ const state = {
   current: 0,
   max: 0,
   samples: [],
+  distanceMeters: 0,
   lastPosition: null,
   heading: null
 };
@@ -73,19 +73,11 @@ function setStatus(text, mode) {
   els.dot.classList.toggle("error", mode === "error");
 }
 
-function directionLabel(heading) {
-  if (heading === null) return "--";
-  const index = Math.round(heading / 45) % DIRECTIONS.length;
-  return DIRECTIONS[index];
-}
-
 function renderCompass() {
   if (state.heading === null) {
-    els.headingText.textContent = "--";
     return;
   }
 
-  els.headingText.textContent = `${directionLabel(state.heading)} ${Math.round(state.heading)} deg`;
   els.compassNeedle.style.transform = `translate(-50%, -50%) rotate(${state.heading}deg)`;
 }
 
@@ -101,6 +93,7 @@ function render() {
   els.unit.textContent = "MPH";
   els.max.textContent = String(maxValue);
   els.avg.textContent = String(avg);
+  els.distance.textContent = (state.distanceMeters / METERS_PER_MILE).toFixed(1);
   els.needle.style.transform = `translate(-50%, -100%) rotate(${angle}deg)`;
   renderCompass();
 }
@@ -123,12 +116,18 @@ function updateFromPosition(position) {
   const rawSpeed = typeof position.coords.speed === "number" && position.coords.speed >= 0
     ? position.coords.speed
     : fallbackSpeed(position);
+  const segmentMeters = state.lastPosition
+    ? haversineMeters(state.lastPosition.coords, position.coords)
+    : 0;
+  const segmentSeconds = state.lastPosition
+    ? (position.timestamp - state.lastPosition.timestamp) / 1000
+    : 0;
 
   state.current = convert(rawSpeed);
   state.max = Math.max(state.max, state.current);
   updateHeading(position);
-  if (position.coords.accuracy) {
-    els.accuracy.textContent = `${Math.round(position.coords.accuracy)}m`;
+  if (segmentSeconds > 0 && segmentSeconds <= 10 && segmentMeters >= 1 && segmentMeters <= 250) {
+    state.distanceMeters += segmentMeters;
   }
   if (state.current > 1) {
     state.samples.push(state.current);
@@ -168,9 +167,9 @@ function reset() {
   state.current = 0;
   state.max = 0;
   state.samples = [];
+  state.distanceMeters = 0;
   state.lastPosition = null;
   state.heading = null;
-  els.accuracy.textContent = "--";
   render();
 }
 
