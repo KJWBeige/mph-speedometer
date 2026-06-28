@@ -20,7 +20,17 @@
             <span class="dot"></span>
             <span id="statusText">READY</span>
           </div>
-          <button id="unitButton" class="icon-button" type="button" aria-label="Switch units">MPH</button>
+          <div class="compass" aria-label="Heading compass">
+            <div class="compass-dial">
+              <span>N</span>
+              <span>E</span>
+              <span>S</span>
+              <span>W</span>
+              <div id="compassNeedle" class="compass-needle"></div>
+            </div>
+            <strong id="headingText">--</strong>
+          </div>
+          <div class="unit-badge" aria-label="Speed unit">MPH</div>
         </div>
 
         <div class="speed-wrap">
@@ -30,6 +40,7 @@
 
         <div class="gauge" aria-hidden="true">
           <div class="ring">
+            <div id="dialTicks" class="dial-ticks"></div>
             <div id="needle" class="needle"></div>
             <div class="hub"></div>
           </div>
