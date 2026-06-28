@@ -126,7 +126,7 @@ function updateFromPosition(position) {
   state.current = convert(rawSpeed);
   state.max = Math.max(state.max, state.current);
   updateHeading(position);
-  if (segmentSeconds > 0 && segmentSeconds <= 10 && segmentMeters >= 1 && segmentMeters <= 250) {
+  if (state.current >= 0.5 && segmentSeconds > 0 && segmentSeconds <= 10 && segmentMeters >= 1 && segmentMeters <= 250) {
     state.distanceMeters += segmentMeters;
   }
   if (state.current > 1) {
